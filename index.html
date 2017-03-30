@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="3D Viewer Web Component" />
+    <title>3D Viewer Web Component</title>
+    <meta name="theme-color" content="#2E3AA1">
+    <meta name="msapplication-TileColor" content="#3372DF">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="PSK">
+
+    <script src="../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="bower_components/3DViewerComponent/dist/tad-view.html">
+
+    <style>
+    html, body {
+        height: 100%;
+        width: 100%;
+    }
+
+    .container {
+        width: 80vw;
+        height: 80vh;
+    }
+    </style>
+
+</head>
+
+<body unresolved class="fullbleed layout vertical">
+
+<div class="container">
+    <tad-view id="viewer" color="93AEBF" previews='[{"file_type": "json","file_url": "../samples/Camel.json"}]'></tad-view>
+</div>
+
+</body>
+
+</html>
