@@ -1,19 +1,15 @@
 {
-  "name": "3DViewerComponent",
+  "name": "tadview",
+  "description": "3D viewer Polymer web component for TADbit-computed genome structure",
+  "keywords": ["tadbit","tad","hi-c","hic","genome","polymer","web-components","three","3d"],
   "authors": [
-    "Autodesk TLV Web Guild"
-  ],
-  "description": "Web Component for a 3D Viewer of a 3D model object",
-  "main": "dist/tad-view.html",
-  "keywords": [
-    "polymer",
-    "web-components",
-    "custom-elements",
-    "polymer-elements"
+    "mikegoodstadt",
+    "david-castillo"
   ],
   "license": "MIT",
+  "main": "dist/tadview.html",
   "dependencies": {
-    "three.js": "https://github.com/mrdoob/three.js.git#r73",
+    "three": "git://github.com/mrdoob/three.js.git#r74",
     "polymer": "~1.3.1"
   }
 }
