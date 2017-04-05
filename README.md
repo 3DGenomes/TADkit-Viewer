@@ -18,7 +18,8 @@ TADview is a 3D viewer web component that displays a model of a TAD from TADbit 
 Add the Polymer and the TADview scripts to your HTML e.g.:
 ```javascript
 <script src="YOUR_ASSETS_PATH/webcomponents-lite.js"></script>
-<link rel="import" href="YOUR_ASSETS_PATH/tadview.html">```
+<link rel="import" href="YOUR_ASSETS_PATH/tadview.html">
+```
 Then use the tag itself with the parameters, e.g.:
 ```javascript
 <tadview color="ff0000"
