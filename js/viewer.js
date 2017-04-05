@@ -72,7 +72,7 @@ var Viewer = function () {
         $this.fov = Math.asin(bodyHeight / 40);
 
         $this.renderer = new THREE.WebGLRenderer({antialias: config.antialias, alpha: config.alpha});
-        $this.renderer.setClearColor(0x333333, 0);
+        $this.renderer.setClearColor(0x000000, 0);
 
         $this.scene = new THREE.Scene();
 

@@ -40,7 +40,7 @@ module.exports = function (grunt) {
         // concat, minify and revision files. Creates configurations in memory so
         // additional tasks can operate on them
         useminPrepare: {
-            html: 'dist/tad-view.html',
+            html: 'dist/three-d-viewer.html',
             options: {
                 dest: 'dist',
                 flow: {
@@ -106,7 +106,7 @@ module.exports = function (grunt) {
         vulcanize: {
             default: {
                 files: {
-                    'dist/tad-view.html': 'tad-view.html'
+                    'dist/three-d-viewer.html': 'three-d-viewer.html'
                 }
             }
         },
@@ -124,8 +124,8 @@ module.exports = function (grunt) {
         //        options:{
         //            tag: 'js/'
         //        },
-        //        src: 'tad-view.html',
-        //        dest: 'dist/tad-view.html'
+        //        src: 'three-d-viewer.html',
+        //        dest: 'dist/three-d-viewer.html'
         //    }
         //},
 
@@ -149,15 +149,15 @@ module.exports = function (grunt) {
                 options:{
                     tag: ''
                 },
-                src: 'tad-view.html',
-                dest: 'dist/tad-view.html'
+                src: 'three-d-viewer.html',
+                dest: 'dist/three-d-viewer.html'
             },
             test: {
                 options:{
                     tag: ''
                 },
-                src: 'tad-view.html',
-                dest: 'bower_components/3DViewerComponent/dist/tad-view.html'
+                src: 'three-d-viewer.html',
+                dest: 'bower_components/3DViewerComponent/dist/three-d-viewer.html'
             }
         },
 

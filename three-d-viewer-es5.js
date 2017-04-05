@@ -4,15 +4,15 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var TADview = function () {
-    function TADview() {
-        _classCallCheck(this, TADview);
+var ThreeDViewer = function () {
+    function ThreeDViewer() {
+        _classCallCheck(this, ThreeDViewer);
     }
 
-    _createClass(TADview, [{
+    _createClass(ThreeDViewer, [{
         key: 'beforeRegister',
         value: function beforeRegister() {
-            this.is = 'tad-view';
+            this.is = 'three-d-viewer';
             this.properties = {
                 previews: {
                     type: Array,
@@ -20,7 +20,7 @@ var TADview = function () {
                 },
                 color: {
                     type: String,
-                    value: '666666',
+                    value: 'cccccc',
                     observer: '_changeModelColor'
                 },
                 options: {
@@ -35,7 +35,7 @@ var TADview = function () {
         key: 'unloadObj',
         value: function unloadObj() {
             this.viewer.unloadObj();
-            this.isTADviewReady = false;
+            this.isThreeDViewerReady = false;
         }
     }, {
         key: 'showPreview',
@@ -70,16 +70,16 @@ var TADview = function () {
             var _this = this;
 
             //index = index || 0;
-            this.viewer.render('#tad-view');
+            this.viewer.render('#three-d-viewer');
             this.viewer.resize();
             this.viewer.loadObject(this.currentModelUrl, this.fileExtension, function () {
-                _this.isTADviewReady = true;
+                _this.isThreeDViewerReady = true;
                 _this.viewer.startRotating();
                 _this.viewer.changeColor(_this.color);
             }, function () {
                 _this.setLoadingFileErrorMessage();
                 _this.viewer.stopRotating();
-                _this.isTADviewReady = false;
+                _this.isThreeDViewerReady = false;
             });
         }
     }, {
@@ -112,7 +112,7 @@ var TADview = function () {
         key: 'previewsChanged',
         value: function previewsChanged() {
             if (this.previews && this.previews.length > 0) {
-                this.isTADviewReady = false;
+                this.isThreeDViewerReady = false;
                 this.getPreviewPath();
             }
         }
@@ -136,8 +136,8 @@ var TADview = function () {
         }
     }]);
 
-    return TADview;
+    return ThreeDViewer;
 }();
 
-Polymer(TADview);
-//# sourceMappingURL=tad-view-es5.js.map
+Polymer(ThreeDViewer);
+//# sourceMappingURL=three-d-viewer-es5.js.map

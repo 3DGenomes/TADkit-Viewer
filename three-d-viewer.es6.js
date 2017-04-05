@@ -1,12 +1,12 @@
 'use strict';
 
-class TADview {
+class ThreeDViewer {
     get LOADING_ERROR() {
         return 'Could not load file.';
     }
 
     beforeRegister() {
-        this.is = 'tad-view';
+        this.is = 'three-d-viewer';
         this.properties = {
             previews: {
                 type: Array,
@@ -14,7 +14,7 @@ class TADview {
             },
             color: {
                 type: String,
-                value: '666666',
+                value: 'cccccc',
                 observer: '_changeModelColor'
             },
             options: {
@@ -28,7 +28,7 @@ class TADview {
 
     unloadObj() {
         this.viewer.unloadObj();
-        this.isTADviewReady = false;
+        this.isThreeDViewerReady = false;
     }
 
     showPreview(preview) {
@@ -56,16 +56,16 @@ class TADview {
 
     renderModel(index) {
         //index = index || 0;
-        this.viewer.render('#tad-view');
+        this.viewer.render('#three-d-viewer');
         this.viewer.resize();
         this.viewer.loadObject(this.currentModelUrl, this.fileExtension, () => {
-            this.isTADviewReady = true;
+            this.isThreeDViewerReady = true;
             this.viewer.startRotating();
             this.viewer.changeColor(this.color);
         }, () => {
             this.setLoadingFileErrorMessage();
             this.viewer.stopRotating();
-            this.isTADviewReady = false;
+            this.isThreeDViewerReady = false;
         });
     }
 
@@ -92,7 +92,7 @@ class TADview {
 
     previewsChanged() {
         if (this.previews && this.previews.length > 0) {
-            this.isTADviewReady = false;
+            this.isThreeDViewerReady = false;
             this.getPreviewPath();
         }
     }
@@ -110,4 +110,4 @@ class TADview {
     }
 }
 
-Polymer(TADview);
+Polymer(ThreeDViewer);

@@ -1,4 +1,4 @@
-<dom-module id="tad-view">
+<dom-module id="three-d-viewer">
   <template>
     <style>
       :host {
@@ -7,14 +7,14 @@
         height: 100%;
       }
 
-      .tad-view-wrapper {
+      .three-d-viewer-wrapper {
         position: relative;
         height: 100%;
         width: 100%;
 
       }
 
-      .tad-view-wrapper:before {
+      .three-d-viewer-wrapper:before {
         content: "";
         display: block;
       }
@@ -94,8 +94,8 @@
         <!--<template is="dom-if" >-->
           <div class="img-box-rel-size">
 
-            <div class="tad-view-wrapper">
-              <div class="viewer" id="tad-view"></div>
+            <div class="three-d-viewer-wrapper">
+              <div class="viewer" id="three-d-viewer"></div>
             </div>
 
           </div>
@@ -108,7 +108,7 @@
         <div class="arrow-right" on-click="showNextPreview"></div>
       </template>
 
-      <template is="dom-if" if="{{!isTADviewReady}}">
+      <template is="dom-if" if="{{!isThreeDViewerReady}}">
         <div class$="loader {{computeErrorClass(loadingMessage)}}">[[loadingMessage]]</div>
       </template>
     </div>
@@ -124,6 +124,6 @@
   <script src="js/STLLoader.js"></script>
   <script src="js/OrbitControls.js"></script>
 
-  <script src="tad-view-es5.js"></script>
+  <script src="three-d-viewer-es5.js"></script>
 
 </dom-module>
