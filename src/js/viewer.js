@@ -127,11 +127,11 @@ var Viewer = function () {
 
         function animate() {
             requestAnimationFrame(animate);
-
+            
             self.controls.update();
             self.renderer.render(self.scene, self.camera);
         }
-
+        
         animate();
     };
 
@@ -289,6 +289,7 @@ var Viewer = function () {
 
 
     this.fitMeshToCamera = function (group) {
+    	$this.resizeAccordingToViewerElem();
         var max = {x: 0, y: 0, z: 0};
         var min = {x: 0, y: 0, z: 0};
 
@@ -310,10 +311,9 @@ var Viewer = function () {
         var meshY = Math.abs(max.y - min.y);
         var meshX = Math.abs(max.x - min.x);
         var meshZ = Math.abs(max.z - min.z);
-        var scaleFactor = 150 / Math.max(meshX, meshY);
+        var scaleFactor = 20 / Math.max(meshX, meshY, meshZ);
 
         group.scale.set(scaleFactor, scaleFactor, scaleFactor);
-
         group.position.y = meshY / 1 * scaleFactor;
 
         var box = new THREE.Box3().setFromObject(group);
@@ -367,8 +367,8 @@ var Viewer = function () {
 
 
     this.resizeAccordingToViewerElem = function () {
-        $this.renderer.setSize($this.viewerEl.offsetWidth, $this.viewerEl.offsetHeight);
-        $this.camera.aspect = $this.viewerEl.offsetWidth / $this.viewerEl.offsetHeight;
+    	$this.renderer.setSize($this.viewerEl.offsetWidth, $this.viewerEl.offsetHeight);
+    	$this.camera.aspect = $this.viewerEl.offsetWidth / $this.viewerEl.offsetHeight;
         $this.camera.updateProjectionMatrix();
     };
 

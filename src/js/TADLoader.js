@@ -233,10 +233,10 @@ THREE.TADLoader.prototype = {
 		var chromatinFiber = new THREE.Object3D();
 		var chromatinGeometry;
 		
-		chromatinGeometry = new THREE.TubeGeometry(cubicPath, pathSegments, 4, 8, pathClosed);
+		chromatinGeometry = new THREE.TubeGeometry(cubicPath, pathSegments, radius, 8, pathClosed);
 		chromatinGeometry.dynamic = true;
 		chromatinGeometry.verticesNeedUpdate = true;
-	
+		chromatinGeometry.center();
 	    var tubeMesh = new THREE.Mesh(chromatinGeometry, new THREE.MeshLambertMaterial({
 	        color: 0xffffff,
 	        //shading: THREE.FlatShading,
@@ -256,6 +256,7 @@ THREE.TADLoader.prototype = {
 	    tubeMesh.dynamic = true;
 	    tubeMesh.needsUpdate = true;
         
+	    
 		chromatinFiber.add( tubeMesh );
 		//chromatinFiber.userData = {display:'tube'};
 /*		var tadobj =
