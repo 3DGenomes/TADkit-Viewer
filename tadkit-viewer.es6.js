@@ -1,12 +1,12 @@
 'use strict';
 
-class ThreeDViewer {
+class TADkitViewer {
     get LOADING_ERROR() {
         return 'Could not load file.';
     }
 
     beforeRegister() {
-        this.is = 'three-d-viewer';
+        this.is = 'tadkit-viewer';
         this.properties = {
             previews: {
                 type: Array,
@@ -28,7 +28,7 @@ class ThreeDViewer {
 
     unloadObj() {
         this.viewer.unloadObj();
-        this.isThreeDViewerReady = false;
+        this.isTADkitViewerReady = false;
     }
 
     showPreview(preview) {
@@ -56,16 +56,16 @@ class ThreeDViewer {
 
     renderModel(index) {
         //index = index || 0;
-        this.viewer.render('#three-d-viewer');
+        this.viewer.render('#tadkit-viewer');
         this.viewer.resize();
         this.viewer.loadObject(this.currentModelUrl, this.fileExtension, () => {
-            this.isThreeDViewerReady = true;
+            this.isTADkitViewerReady = true;
             this.viewer.startRotating();
             this.viewer.changeColor(this.color);
         }, () => {
             this.setLoadingFileErrorMessage();
             this.viewer.stopRotating();
-            this.isThreeDViewerReady = false;
+            this.isTADkitViewerReady = false;
         });
     }
 
@@ -92,7 +92,7 @@ class ThreeDViewer {
 
     previewsChanged() {
         if (this.previews && this.previews.length > 0) {
-            this.isThreeDViewerReady = false;
+            this.isTADkitViewerReady = false;
             this.getPreviewPath();
         }
     }
@@ -110,4 +110,4 @@ class ThreeDViewer {
     }
 }
 
-Polymer(ThreeDViewer);
+Polymer(TADkitViewer);

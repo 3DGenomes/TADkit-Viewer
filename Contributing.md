@@ -35,7 +35,7 @@ Before you submit your pull request consider the following guidelines:
      git checkout -b my-fix-branch master
      ```
 
-* Create your patch. Code is written in ES6 in `three-d-viewer.es6.js` or ES5 in other JS files under the `js` folder. 
+* Create your patch. Code is written in ES6 in `tadkit-viewer.es6.js` or ES5 in other JS files under the `js` folder. 
 To run the project, run:
 
     ```shell

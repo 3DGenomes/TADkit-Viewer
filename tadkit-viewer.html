@@ -1,4 +1,4 @@
-<dom-module id="three-d-viewer">
+<dom-module id="tadkit-viewer">
   <template>
     <style>
       :host {
@@ -7,14 +7,14 @@
         height: 100%;
       }
 
-      .three-d-viewer-wrapper {
+      .tadkit-viewer-wrapper {
         position: relative;
         height: 100%;
         width: 100%;
 
       }
 
-      .three-d-viewer-wrapper:before {
+      .tadkit-viewer-wrapper:before {
         content: "";
         display: block;
       }
@@ -94,8 +94,8 @@
         <!--<template is="dom-if" >-->
           <div class="img-box-rel-size">
 
-            <div class="three-d-viewer-wrapper">
-              <div class="viewer" id="three-d-viewer"></div>
+            <div class="tadkit-viewer-wrapper">
+              <div class="viewer" id="tadkit-viewer"></div>
             </div>
 
           </div>
@@ -108,7 +108,7 @@
         <div class="arrow-right" on-click="showNextPreview"></div>
       </template>
 
-      <template is="dom-if" if="{{!isThreeDViewerReady}}">
+      <template is="dom-if" if="{{!isTADkitViewerReady}}">
         <div class$="loader {{computeErrorClass(loadingMessage)}}">[[loadingMessage]]</div>
       </template>
     </div>
@@ -124,6 +124,6 @@
   <script src="js/STLLoader.js"></script>
   <script src="js/OrbitControls.js"></script>
 
-  <script src="three-d-viewer-es5.js"></script>
+  <script src="tadkit-viewer-es5.js"></script>
 
 </dom-module>

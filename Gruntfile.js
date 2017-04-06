@@ -40,7 +40,7 @@ module.exports = function (grunt) {
         // concat, minify and revision files. Creates configurations in memory so
         // additional tasks can operate on them
         useminPrepare: {
-            html: 'dist/three-d-viewer.html',
+            html: 'dist/tadkit-viewer.html',
             options: {
                 dest: 'dist',
                 flow: {
@@ -106,7 +106,7 @@ module.exports = function (grunt) {
         vulcanize: {
             default: {
                 files: {
-                    'dist/three-d-viewer.html': 'three-d-viewer.html'
+                    'dist/tadkit-viewer.html': 'tadkit-viewer.html'
                 }
             }
         },
@@ -124,8 +124,8 @@ module.exports = function (grunt) {
         //        options:{
         //            tag: 'js/'
         //        },
-        //        src: 'three-d-viewer.html',
-        //        dest: 'dist/three-d-viewer.html'
+        //        src: 'tadkit-viewer.html',
+        //        dest: 'dist/tadkit-viewer.html'
         //    }
         //},
 
@@ -149,15 +149,15 @@ module.exports = function (grunt) {
                 options:{
                     tag: ''
                 },
-                src: 'three-d-viewer.html',
-                dest: 'dist/three-d-viewer.html'
+                src: 'tadkit-viewer.html',
+                dest: 'dist/tadkit-viewer.html'
             },
             test: {
                 options:{
                     tag: ''
                 },
-                src: 'three-d-viewer.html',
-                dest: 'bower_components/3DViewerComponent/dist/three-d-viewer.html'
+                src: 'tadkit-viewer.html',
+                dest: 'bower_components/tadkit-viewer/dist/tadkit-viewer.html'
             }
         },
 
@@ -168,7 +168,7 @@ module.exports = function (grunt) {
                     expand: true,
                     dot: true,
                     cwd: '',
-                    dest: 'bower_components/3DViewerComponent',
+                    dest: 'bower_components/tadkit-viewer',
                     src: [
                         'js/*'
                     ]

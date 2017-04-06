@@ -1,17 +1,22 @@
 {
-  "name": "tadview",
+  "name": "tadkit-viewer",
   "version": "0.1.0",
   "description": "3D viewer Polymer web component for TADbit-computed genome structure",
   "contributors": [
     "mikegoodstadt",
     "david-castillo"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/3DGenomes/TADkit-Viewer.git"
+  },
   "license": "MIT",
   "main": "Gruntfile.js",
   "dependencies": {},
   "devDependencies": {
     "babel-preset-es2015": "^6.5.0",
     "connect-modrewrite": "^0.8.5",
+    "grunt": "^1.0.1",
     "grunt-babel": "^6.0.0",
     "grunt-contrib-clean": "^1.0.0",
     "grunt-contrib-concat": "^1.0.0",
