@@ -53,7 +53,7 @@
   });
 
   gulp.task('openbrowser', function() {
-    opn( 'http://' + server.host + ':' + server.port + 'index.html');
+    opn( 'http://' + server.host + ':' + server.port + '/index.html');
   });
 
   // Watch Files For Changes
