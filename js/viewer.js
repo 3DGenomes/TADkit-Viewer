@@ -16,19 +16,19 @@ var Viewer = function () {
             config.alpha = true;
         }
         if (config.maxDistance === undefined) {
-            config.maxDistance = 1000;
+            config.maxDistance = 50;
         }
         if (config.viewAngle === undefined) {
-            config.viewAngle = 80;
+            config.viewAngle = 90;
         }
         if (config.aspect === undefined) {
             config.aspect = 1.0;
         }
         if (config.near === undefined) {
-            config.near = 0.01;
+            config.near = 0.1;
         }
         if (config.far === undefined) {
-            config.far = 1000;
+            config.far = 50;
         }
         if (config.size === undefined) {
             config.size = 500;
@@ -104,7 +104,7 @@ var Viewer = function () {
         var gridHelper = new THREE.GridHelper(config.size, config.step);
         gridHelper.setColors(0xaaaaaa, 0xe0e0e0);
         gridHelper.position.y = config.gridY;
-        $this.scene.add(gridHelper);
+        //$this.scene.add(gridHelper);
 
         // GROUND
         var geometry = new THREE.PlaneBufferGeometry(10, 10);
@@ -117,7 +117,7 @@ var Viewer = function () {
         ground.castShadow = false;
         ground.receiveShadow = true;
 
-        $this.scene.add(ground);
+        //$this.scene.add(ground);
 
         document.querySelector('body').addEventListener('click', function(event) {
             if (event.target.parentNode && event.target.parentNode.nodeName.toLowerCase() === 'div' && event.target.parentNode.classList.contains('viewer') > -1) {
@@ -171,6 +171,26 @@ var Viewer = function () {
 
             onViewerReady && onViewerReady()
         }.bind($this), undefined, onError);
+    };
+    
+    this.loadTad = function (obj, onViewerReady, onError) {
+    	
+    	var loader = new THREE.TADLoader();
+    	
+    	
+    	loader.load(obj,
+    		function ( tadobj ) {
+	    		
+	            $this.scene.add(tadobj);
+	            $this.fitMeshToCamera(tadobj.children[0]);
+
+                onViewerReady && onViewerReady()
+	            
+    			
+    		}
+    	);
+    	
+    	
     };
 
     this.loadObj = function (obj, onViewerReady, onError) {
@@ -290,17 +310,17 @@ var Viewer = function () {
         var meshY = Math.abs(max.y - min.y);
         var meshX = Math.abs(max.x - min.x);
         var meshZ = Math.abs(max.z - min.z);
-        var scaleFactor = 10 / Math.max(meshX, meshY);
+        var scaleFactor = 150 / Math.max(meshX, meshY);
 
         group.scale.set(scaleFactor, scaleFactor, scaleFactor);
 
-        group.position.y = meshY / 2 * scaleFactor;
+        group.position.y = meshY / 1 * scaleFactor;
 
         var box = new THREE.Box3().setFromObject(group);
         box.center(group.position); // $this re-sets the mesh position
         group.position.multiplyScalar(-1);
 
-        group.position.y += meshY * scaleFactor + 0.2;
+        group.position.y += meshY * scaleFactor + 0;
     };
 
 
@@ -311,6 +331,9 @@ var Viewer = function () {
                 break;
             case 'json':
                 $this.loadJson(obj, onViewerReady, onLoadError);
+                break;
+            case 'tad':
+                $this.loadTad(obj, onViewerReady, onLoadError);
                 break;
             case 'obj':
                 $this.loadObj(obj, onViewerReady, onLoadError);
