@@ -190,10 +190,20 @@ THREE.TADLoader.prototype = {
 		var particleSegments = 40;
 		var genomeLength = 816394;
 		var palette = ["#ff0000","#ff0000"];
-		
+		var resolution_scales = {
+			"2000" : 1,
+			"10000" : 1,
+			"50000" : 5,
+			"100000" : 5
+		};
+			
 		var tadjson = JSON.parse(text);
-		for (var i = tadjson.models.length - 1; i >= 0; i--) {
-			if (tadjson.models[i].ref == tadjson.centroids[0]) first_centroid = tadjson.models[i];
+		if(tadjson.centroids.length > 0) {
+			for (var i = tadjson.models.length - 1; i >= 0; i--) {
+				if (tadjson.models[i].ref == tadjson.centroids[0]) first_centroid = tadjson.models[i];
+			}
+		} else {
+			first_centroid = tadjson.models[0];
 		}
 		
 		var segmentsCount = tadjson.models.length * particleSegments
@@ -229,7 +239,18 @@ THREE.TADLoader.prototype = {
 		var pathLength = cubicPath.getLength();
 		var chromatinRadius = 5; // 10nm * 0.5
 		var chromatinLength = genomeLength * 11 / 1080;
-		var radius = (pathLength * chromatinRadius) / chromatinLength;
+		var resolution = tadjson.object.resolution;
+		var resolution_scale;
+		if(typeof tadjson.object.radius_scale !== 'undefined') {
+			resolution_scale = parseInt(tadjson.object.radius_scale);
+		} else {
+			for (var key in resolution_scales) {
+			  if (resolution_scales.hasOwnProperty(key) && parseInt(key) <= resolution)
+			  	resolution_scale = resolution_scales[key];
+			}
+		}
+		//var radius = (pathLength * chromatinRadius) / chromatinLength;
+		var radius = resolution_scale*chromatinRadius;
 		var chromatinFiber = new THREE.Object3D();
 		var chromatinGeometry;
 		
